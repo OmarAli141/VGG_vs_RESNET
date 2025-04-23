@@ -2,10 +2,6 @@
 
 This repository compares two popular deep learning architectures—VGG16 and ResNet50—on the classic Cats vs. Dogs binary classification task.
 
-## 📂 Project Structure
-├── data/ │ ├── train/ # 8,000 images (4,000 cats + 4,000 dogs) │ └── test/ # 2,000 images (1,000 cats + 1,000 dogs) ├── notebooks/ │ ├── VGG16_CatsVsDogs.ipynb │ └── ResNet50_CatsVsDogs.ipynb ├── requirements.txt ├── train.py # Script to train either model ├── evaluate.py # Script to evaluate on the test set └── README.md
-
-
 ## 🔍 Dataset
 
 - **Source**: [Kaggle Cats and Dogs Dataset](https://www.kaggle.com/datasets/tongpython/cat-and-dog)
@@ -59,3 +55,25 @@ This repository compares two popular deep learning architectures—VGG16 and Res
     Cons:
 
         More complex block design
+
+
+
+📊 Performance Comparison
+Model	Training       Loss (Final)	    Test Accuracy	  Parameters	   Training Time (50 Epochs)
+VGG16	                 0.2226 	         88.48%        	138M	           ~2 hours (GPU)
+ResNet50	              0.0277	            73.21%	      25.5M	           ~1.5 hours (GPU)
+
+
+Key Observations:
+
+    VGG16 outperformed ResNet50 (~88% vs. ~73% accuracy).
+
+        Possible reasons:
+
+            VGG's deeper feature extraction works well for this smaller dataset.
+
+            ResNet may need more data to leverage its depth effectively.
+
+    ResNet trained faster (fewer params + skip connections help gradient flow).
+
+    VGG had higher final loss but better generalization (possibly due to dropout layers).
